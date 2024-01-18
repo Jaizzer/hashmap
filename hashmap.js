@@ -83,4 +83,10 @@ class HashMap {
         }
         return false;
     }
+
+    // Returns an array of keys.
+    keys() {
+        const keys = this.buckets.filter((value) => value !== undefined).map((obj) => obj.key);
+        return keys;
+    }
 }
