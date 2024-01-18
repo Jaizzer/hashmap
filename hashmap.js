@@ -16,9 +16,10 @@ class HashMap {
     }
 
     set(key, value) {
+        const index = this.hash(key);
+
         // Overwrite the value of the key if it exists in the hashmap
         if (this.has(key)) {
-            const index = this.hash(key);
             this.buckets[index].value = value;
         } else {
             const loadFactor = 0.75;
