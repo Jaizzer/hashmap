@@ -16,12 +16,20 @@ class HashMap {
     }
 
     set(key, value) {
-        const index = this.hash(key);
+        let index = this.hash(key);
 
         // Overwrite the value of the key if it exists in the hashmap
         if (this.has(key)) {
             this.buckets[index].value = value;
         } else {
+            while (this.buckets[index] !== undefined) {
+                index++;
+
+                // Cycle back to the array if end is reached.
+                if (index == this.buckets.length) {
+                    index = 0;
+                }
+            }
             // Insert the key-value pair to the hash map.
             this.buckets[index] = { key: key, value: value };
 
@@ -55,6 +63,7 @@ class HashMap {
         }
         return false;
     }
+
     clear() {
         // Create new array of the same size of the previous.
         this.buckets = new Array(this.buckets.length);
