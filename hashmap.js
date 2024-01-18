@@ -3,7 +3,8 @@ class HashMap {
         this.length = 0;
         this.buckets = new Array(16);
     }
-    // Hashing function
+
+    // Hash the string.
     hash(string) {
         let hashCode = 0;
         const primeNumber = 31;
@@ -15,6 +16,7 @@ class HashMap {
         return hashCode % this.buckets.length;
     }
 
+    // Replace a key-value pair's value or insert a new key-value pair.
     set(key, value) {
         let index = this.hash(key);
 
@@ -46,6 +48,7 @@ class HashMap {
         }
     }
 
+    // Get the value of a specific key-value pair.
     get(key) {
         const index = this.hash(key);
         if (this.has(key)) {
@@ -54,6 +57,7 @@ class HashMap {
         return null;
     }
 
+    // Check if a particular key is in the hash map.
     has(key) {
         const index = this.hash(key);
         if (index < 0 || index >= this.buckets.length) {
@@ -64,6 +68,7 @@ class HashMap {
         return false;
     }
 
+    // Clear the hashamp.
     clear() {
         // Create new array of the same size of the previous.
         this.buckets = new Array(this.buckets.length);
@@ -72,6 +77,7 @@ class HashMap {
         this.length = 0;
     }
 
+    // Remove a particulart key-value pair.
     remove(key) {
         const index = this.hash(key);
 
@@ -84,19 +90,19 @@ class HashMap {
         return false;
     }
 
-    // Returns an array of keys.
+    // Return an array of keys.
     keys() {
         const keys = this.buckets.filter((value) => value !== undefined).map((obj) => obj.key);
         return keys;
     }
 
-    // Returns an array of values.
+    // Return an array of values.
     values() {
         const values = this.buckets.filter((value) => value !== undefined).map((obj) => obj.value);
         return values;
     }
 
-    // Returns an array of key-value pairs.
+    // Return an array of key-value pairs.
     entries() {
         const entries = this.buckets.filter((value) => value !== undefined).map((obj) => [obj.key, obj.value]);
         return entries;
