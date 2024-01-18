@@ -38,6 +38,14 @@ class HashMap {
         }
     }
 
+    get(key) {
+        const index = this.hash(key);
+        if (this.has(key)) {
+            return this.buckets[index].value;
+        }
+        return null;
+    }
+
     has(key) {
         const index = this.hash(key);
         if (index < 0 || index >= this.buckets.length) {
