@@ -95,4 +95,10 @@ class HashMap {
         const values = this.buckets.filter((value) => value !== undefined).map((obj) => obj.value);
         return values;
     }
+
+    // Returns an array of key-value pairs.
+    entries() {
+        const entries = this.buckets.filter((value) => value !== undefined).map((obj) => [obj.key, obj.value]);
+        return entries;
+    }
 }
