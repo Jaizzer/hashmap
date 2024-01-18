@@ -71,4 +71,16 @@ class HashMap {
         // Reset the length.
         this.length = 0;
     }
+
+    remove(key) {
+        const index = this.hash(key);
+
+        // Remove the key if it exists by setting its container bucket to undefined.
+        if (this.has(key)) {
+            this.buckets[index] = undefined;
+            this.length--;
+            return true;
+        }
+        return false;
+    }
 }
