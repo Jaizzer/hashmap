@@ -22,6 +22,9 @@ class HashMap {
         if (this.has(key)) {
             this.buckets[index].value = value;
         } else {
+            // Insert the key-value pair to the hash map.
+            this.buckets[index] = { key: key, value: value };
+
             const loadFactor = 0.75;
             const isLoadFactorReached = this.length / this.buckets.length >= loadFactor;
 
