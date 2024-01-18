@@ -55,4 +55,11 @@ class HashMap {
         }
         return false;
     }
+    clear() {
+        // Create new array of the same size of the previous.
+        this.buckets = new Array(this.buckets.length);
+
+        // Reset the length.
+        this.length = 0;
+    }
 }
