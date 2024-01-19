@@ -20,6 +20,14 @@ class HashMap {
         if (this.has(key)) {
             const index = this.hash(key);
             this.buckets[index].value = value;
+        } else {
+            const loadFactor = 0.75;
+            const isLoadFactorReached = this.length / this.buckets.length >= loadFactor;
+
+            // Double the buckets if load factor is reached.
+            if (isLoadFactorReached) {
+                this.buckets = this.buckets.concat(new Array(this.buckets.length));
+            }
         }
     }
 
