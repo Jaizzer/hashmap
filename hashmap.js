@@ -1,7 +1,7 @@
 class HashMap {
     constructor() {
         this.length = 0;
-        this.buckets = new Array(16);
+        this.buckets = new Array(16).fill(undefined);
     }
 
     // Hash the string.
@@ -49,7 +49,7 @@ class HashMap {
         const oldBuckets = this.buckets;
 
         // Create new bucket double the size of the previous buckets.
-        this.buckets = new Array(oldBuckets.length * 2);
+        this.buckets = new Array(oldBuckets.length * 2).fill(undefined);
 
         // Reset key value pair count.
         this.length = 0;
@@ -79,7 +79,7 @@ class HashMap {
     // Clear the hashamp.
     clear() {
         // Create new array of the same size of the previous.
-        this.buckets = new Array(this.buckets.length);
+        this.buckets = new Array(this.buckets.length).fill(undefined);
 
         // Reset the length.
         this.length = 0;
