@@ -43,6 +43,7 @@ class HashMap {
         }
     }
 
+    // Create new buckets and re-place the key-value pairs.
     rehash() {
         // Save old buckets.
         const oldBuckets = this.buckets;
