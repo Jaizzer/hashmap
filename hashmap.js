@@ -72,9 +72,7 @@ class HashMap {
     // Check if a particular key is in the hash map.
     has(key) {
         const index = this.hash(key);
-        if (index < 0 || index >= this.buckets.length) {
-            throw new Error('Trying to access index out of bound');
-        } else if (this.buckets[index] !== undefined && key === this.buckets[index].key) {
+        if (this.buckets[index] !== undefined && key === this.buckets[index].key) {
             return true;
         }
         return false;
