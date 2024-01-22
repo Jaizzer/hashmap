@@ -84,7 +84,7 @@ class HashMap {
         this.length = 0;
     }
 
-    // Remove a particulart key-value pair.
+    // Remove a particular key-value pair.
     remove(key) {
         const index = this.hash(key);
 
