@@ -24,6 +24,7 @@ class HashMap {
         if (this.has(key)) {
             this.buckets[index].value = value;
         } else {
+            // Insert the new key-value pair to the next available bucket if the intended bucket location is already filled.
             while (this.buckets[index] !== undefined) {
                 index++;
 
@@ -32,7 +33,7 @@ class HashMap {
                     index = 0;
                 }
             }
-            // Insert the key-value pair to the hash map.
+            // Insert the key-value pair to the bucket.
             this.buckets[index] = { key: key, value: value };
 
             // Update key count.
