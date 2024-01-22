@@ -38,14 +38,30 @@ class HashMap {
             // Update key count.
             this.length++;
 
+            // Rehash if the load factor is reached.
             const loadFactor = 0.75;
             const isLoadFactorReached = this.length / this.buckets.length >= loadFactor;
-
-            // Double the buckets if load factor is reached.
             if (isLoadFactorReached) {
-                this.buckets = this.buckets.concat(new Array(this.buckets.length));
+                this.rehash();
             }
         }
+    }
+
+    rehash() {
+        // Save old buckets.
+        const oldBuckets = this.buckets;
+
+        // Create new bucket double the size of the previous buckets.
+        this.buckets = new Array(oldBuckets.length * 2);
+
+        // Reset key value pair count.
+        this.length = 0;
+
+        // Get the key-value pairs from the old buckets.
+        const oldBucketsKeyValuePairs = oldBuckets.filter((element) => element !== undefined);
+
+        // Place the key-value pairs in the new buckets.
+        oldBucketsKeyValuePairs.forEach((keyValuePair) => this.set(keyValuePair.key, keyValuePair.value));
     }
 
     // Get the value of a specific key-value pair.
